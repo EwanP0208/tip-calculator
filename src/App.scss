@@ -1,0 +1,238 @@
+$colour-cyan-strong: hsl(172, 67%, 45%);
+$colour-cyan-0: hsl(183, 100%, 15%);
+$colour-cyan-1: hsl(186, 14%, 43%);
+$colour-cyan-2: hsl(184, 14%, 56%);
+$colour-cyan-3: hsl(185, 41%, 84%);
+$colour-cyan-4: hsl(189, 41%, 97%);
+$colour-white: hsl(0, 0%, 100%);
+
+$font-size-input: 24px;
+
+$font-family: 'Space Mono', monospace;
+
+* {
+  font-family: $font-family;
+  box-sizing: border-box;
+}
+
+.app {
+  background: $colour-cyan-3;
+  height: 100vh;
+
+  .app--title {
+    margin: 0 auto;
+    padding: 1em;
+    display: block;
+  }
+}
+
+.bill--container {
+  background: $colour-white;
+  padding: 1em;
+  border-radius: 1em;
+}
+
+.bill--form {
+  padding: 0.5em;
+
+  label {
+    font-weight: 700;
+    color: $colour-cyan-2;
+    margin-bottom: 0.25em;
+  }
+
+  input {
+    border: 0;
+    background: $colour-cyan-4;
+    padding: 0.25em 0.75em;
+    border-radius: 0.25em;
+    color: $colour-cyan-0;
+    font-weight: 700;
+    text-align: right;
+  }
+
+  .bill--form__value, .bill--form__people {
+    width: 100%;
+    font-size: $font-size-input;
+    margin-top: 0.25em;
+  }
+
+  .bill--form__percentage {
+    margin: 2em 0;
+  }
+
+  ::placeholder {
+    color: $colour-cyan-2;
+  }
+
+  .percentage--tiles {
+    display: grid;
+    grid-template-columns: (1fr 1fr);
+    grid-gap: 1em;
+    margin-top: 0.75em;
+    
+    button, input {
+      font-size: $font-size-input;
+    }
+
+    button {
+      background: $colour-cyan-0;
+      color: $colour-white;
+      border: 0;
+      border-radius: 0.25em;
+      padding: 0.25em 0;
+      font-weight: 400;
+
+      &.selected {
+        background: $colour-cyan-strong;
+        color: $colour-cyan-0;
+      }
+    }
+  }
+}
+
+.bill--results {
+  background: $colour-cyan-0;
+  padding: 1.5em;
+  border-radius: 0.75em;
+  margin-top: 1.5em;
+
+  p {
+    margin: 0;
+  }
+
+  .bill--result {
+    margin-top: 1em;
+    display: grid;
+    grid-template-columns: (auto auto);
+
+    .bill--result__text {
+      text-align: left;
+
+      .bill--result__title {
+        font-weight: 700;
+        color: $colour-white;
+      }
+
+      .bill--result__pp {
+        color: $colour-cyan-1;
+        font-weight: 700;
+        font-size: 0.8em;
+      }
+    }
+
+    .bill--result__value {
+      text-align: right;
+      color: $colour-cyan-strong;
+
+      font-size: 2rem;
+      font-weight: 700;
+    }
+  }
+}
+
+.button--reset {
+  margin-top: 1em;
+  text-align: center;
+  width: 100%;
+
+  text-transform: uppercase;
+  font-size: 1.25rem;
+  font-weight: 700;
+
+  color: $colour-cyan-0;
+  background-color: $colour-cyan-strong;
+
+  border: 0;
+  border-radius: 0.25em;
+
+  padding: 0.4em
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+@media (min-width: 650px) {
+  .bill--form {
+    .percentage--tiles {
+      grid-template-columns: 1fr 1fr 1fr;
+    }
+  }
+}
+
+@media (min-width: 900px) {
+  .app {
+    .app--title {
+      padding: 6em 0;
+    }
+  }
+
+  .bill--container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-column-gap: 3em;
+
+    padding: 2em;
+
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .bill--form {
+    padding: 0;
+  }
+
+  .bill--results {
+    margin: 0;
+    padding: 2em;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    .bill--result {
+      margin-top: 0em;
+      padding-top: 1em;
+      display: grid;
+      grid-template-columns: (auto auto);
+  
+      .bill--result__text {
+        text-align: left;
+  
+        .bill--result__title {
+          font-weight: 700;
+          font-size: 0.9em;
+          color: $colour-white;
+        }
+  
+        .bill--result__pp {
+          color: $colour-cyan-1;
+          font-weight: 700;
+          font-size: 0.8em;
+        }
+      }
+  
+      .bill--result__value {
+        text-align: right;
+        color: $colour-cyan-strong;
+  
+        font-size: 2.5rem;
+        line-height: 2.5rem;
+        font-weight: 700;
+      }
+    }
+
+    .bill--result + .bill--result {
+      margin-top: 1.5em;
+    }
+  }
+}
